@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Chatbot</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+
+            <h2>🤖 Prasuna Kanchi Assistant</h2>
+
+            <button
+                    class="new-chat"
+                    onclick="newChat()">
+
+                + New Chat
+
+            </button>
+
+        </div>
+
+
+        <div class="upload-section">
+
+            <input
+                    type="file"
+                    id="pdfFile"
+                    accept=".pdf"
+                    hidden
+                    onchange="uploadPdf()"
+            >
+            <button
+                    class="upload-btn"
+                    onclick="document.getElementById('pdfFile').click()">
+                📄 Upload PDF
+            </button>
+
+        </div>
+
+
+        <h4>Previous Chats</h4>
+
+        <div id="chat-history">
+
+        </div>
+
+    </aside>
+
+
+    <!-- Chat Area -->
+
+    <main class="chat-container">
+
+        <div class="chat-header">
+
+            <div>
+
+                <h2 id="chat-title">
+                    Prasuna Kanchi Assistant
+                </h2>
+
+                <span>● Online</span>
+
+            </div>
+
+        </div>
+
+
+        <div
+                id="chat-box"
+                class="chat-box">
+
+        </div>
+
+
+        <div class="input-area">
+
+            <input
+                    type="text"
+                    id="message"
+                    placeholder="Type your message..."
+                    onkeydown="handleKeyPress(event)"
+            />
+
+            <button
+                    onclick="sendMessage()">
+
+                Send
+
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
