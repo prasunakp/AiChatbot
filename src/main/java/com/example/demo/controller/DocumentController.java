@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.DocumentService;
+import com.example.demo.service.PdfRagService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,12 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/documents")
 public class DocumentController {
-    private final DocumentService documentService;
+    private final PdfRagService pdfRagService;
 
-    public DocumentController(
-            DocumentService documentService) {
-
-        this.documentService = documentService;
+    public DocumentController(PdfRagService pdfRagService) {
+        this.pdfRagService = pdfRagService;
     }
 
     @PostMapping("/upload")
@@ -25,9 +24,10 @@ public class DocumentController {
             MultipartFile file) {
         try {
             String result =
-                    documentService.processPdf(file);
+                    pdfRagService.processPdf(file);
             return ResponseEntity.ok(result);
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity
                     .internalServerError()
                     .body("PDF processing failed");
