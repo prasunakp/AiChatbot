@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
                 @PathVariable Long sessionId,
                 @RequestBody String message) {
 
+            
             return chatService.sendMessage(
                     sessionId,
                     message);
